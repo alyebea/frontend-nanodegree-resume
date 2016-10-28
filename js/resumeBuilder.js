@@ -20,6 +20,7 @@ var bio = {
     "biopic": "images/Headshot2.jpg"
 };
 
+//function to display bio code
 bio.display = function() {
 
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -95,6 +96,7 @@ var work = {
     }]
 };
 
+//function to display work code
 work.display = function () {
 
     work.jobs.forEach(function(job){
@@ -147,6 +149,7 @@ var projects = {
     }]
 };
 
+//function to display projects code
 projects.display = function() {
 
     projects.projects.forEach(function(projects) {
@@ -168,3 +171,91 @@ projects.display = function() {
 };
 
 projects.display();
+
+
+//Education section below
+
+var education = {
+    "schools": [
+    {
+        "name": "The City College of New York, Macaulay Honors College",
+        "location": "New York, NY",
+        "degree": "BFA",
+        "major": "Film & Video",
+        "dates": "August 2006 - May 2010"
+    },
+    {
+        "name": "Duke University",
+        "location": "Durham, NC",
+        "degree": "MA",
+        "major": "Graduate Liberal Studies",
+        "dates": "August 2012 - May 2015"
+    }],
+
+    "onlineCourses": [
+    {
+        "title":"Front-end Web Developer Nanodegree",
+        "school": "Udacity.com",
+        "dates": "August 2016 - November 2016",
+        "url": "https://www.udacity.com/"
+    },
+    {   "title":"Various Web and UX Design Courses",
+        "school": "Lynda.com",
+        "dates": "September 2014 - present",
+        "url": "https://www.lynda.com/"
+    }]
+};
+
+education.display = function() {
+
+    education.schools.forEach(function(schools) {
+
+        $("#education").append(HTMLschoolStart);
+
+        var formattedName = HTMLschoolName.replace("%data%", schools.name);
+        var formattedDegree = HTMLschoolDegree.replace("%data%", schools.degree);
+        var formattedSchoolName = formattedName + formattedDegree;
+
+        $(".education-entry:last").append(formattedSchoolName);
+
+        var formattedDates = HTMLschoolDates.replace("%data%", schools.dates);
+        $(".education-entry:last").append(formattedDates);
+
+        var formattedLocation = HTMLschoolLocation.replace("%data%", schools.location);
+        $(".education-entry:last").append(formattedLocation);
+
+        var formattedMajor = HTMLschoolMajor.replace("%data%", schools.major);
+        $(".education-entry:last").append(formattedMajor);
+
+    })
+
+    education.onlineCourses.forEach(function(onlineCourses) {
+
+        // $("#education").append(HTMLonlineClasses);
+
+        var formattedTitle = HTMLonlineTitle.replace("%data%", onlineCourses.title);
+        var formattedSchool = HTMLonlineSchool.replace("%data%", onlineCourses.school);
+        var formattedOnlineName = formattedTitle + formattedSchool;
+
+        $(".education-entry:last").append(formattedOnlineName);
+
+        var formattedDates = HTMLonlineDates.replace("%data%", onlineCourses.dates);
+        $(".education-entry:last").append(formattedDates);
+
+        var formattedURL = HTMLonlineURL.replace("%data%", onlineCourses.url);
+        $(".education-entry:last").append(formattedURL);
+
+    })
+};
+
+education.display();
+
+
+
+
+
+
+
+
+
+
