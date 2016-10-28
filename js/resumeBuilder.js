@@ -22,47 +22,47 @@ var bio = {
 
 bio.display = function() {
 
-        var formattedName = HTMLheaderName.replace("%data%", bio.name);
-        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
-        $("#header").prepend(formattedRole);
-        $("#header").prepend(formattedName);
+    $("#header").prepend(formattedRole);
+    $("#header").prepend(formattedName);
 
-        bio.contacts.forEach(function(contact){
+    bio.contacts.forEach(function(contact){
 
-            var formattedMobile = HTMLmobile.replace("%data%", contact.mobile);
-            $("#topContacts").append(formattedMobile);
-            var formattedEmail = HTMLemail.replace("%data%", contact.email);
-            $("#topContacts").append(formattedEmail);
-            var formattedGithub = HTMLgithub.replace("%data%", contact.github);
-            $("#topContacts").append(formattedGithub);
-            var formattedTwitter = HTMLtwitter.replace("%data%", contact.twitter);
-            $("#topContacts").append(formattedTwitter);
-            var formattedLocation = HTMLlocation.replace("%data%", contact.location);
-            $("#topContacts").append(formattedLocation);
-        })
+        var formattedMobile = HTMLmobile.replace("%data%", contact.mobile);
+        $("#topContacts").append(formattedMobile);
+        var formattedEmail = HTMLemail.replace("%data%", contact.email);
+        $("#topContacts").append(formattedEmail);
+        var formattedGithub = HTMLgithub.replace("%data%", contact.github);
+        $("#topContacts").append(formattedGithub);
+        var formattedTwitter = HTMLtwitter.replace("%data%", contact.twitter);
+        $("#topContacts").append(formattedTwitter);
+        var formattedLocation = HTMLlocation.replace("%data%", contact.location);
+        $("#topContacts").append(formattedLocation);
+    })
 
-        var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-        var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
 
-        $("#header").append(formattedBiopic);
-        $("#header").append(formattedWelcome);
+    $("#header").append(formattedBiopic);
+    $("#header").append(formattedWelcome);
 
-        if(bio.skills.length > 0) {
+    if(bio.skills.length > 0) {
 
-            $("#header").append(HTMLskillsStart);
+        $("#header").append(HTMLskillsStart);
 
-            var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-            $("#skills").append(formattedSkill);
-            formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-            $("#skills").append(formattedSkill);
-            formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-            $("#skills").append(formattedSkill);
-            formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-            $("#skills").append(formattedSkill);
-            formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-            $("#skills").append(formattedSkill);
-}
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+        $("#skills").append(formattedSkill);
+        formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+        $("#skills").append(formattedSkill);
+        formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+        $("#skills").append(formattedSkill);
+        formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+        $("#skills").append(formattedSkill);
+        formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+        $("#skills").append(formattedSkill);
+    }
 };
 
 bio.display();
@@ -117,8 +117,54 @@ work.display = function () {
 
         $(".work-entry:last").append(
             formattedDates, formattedDescription);
-        })
+    })
 };
 
 work.display();
 
+
+//Projects section below
+
+var projects = {
+    "projects": [
+    {
+        "title": "Finding Home: Journey of an Italian Immigrant",
+        "dates": "September 2014 - May 2015",
+        "description": "Interactive documentary e-book created as a final project for my Masters Degree.",
+        "images": "images/findinghome.jpg"
+    },
+    {
+        "title": "Music Conservatory of Westchester Website",
+        "dates": "October 2015 - May 2016",
+        "description": "Updated and improved the Music Conservatory website with better usability and visual appeal.",
+        "images": "images/musicconservatory.jpg"
+    },
+    {
+        "title": "Portfolio Website",
+        "dates": "September 2016",
+        "description": "Created visual portfolio site in fulfillment of Ucacity nanodegree.",
+        "images": "images/portfolioproject.jpg"
+    }]
+};
+
+projects.display = function() {
+
+    projects.projects.forEach(function(projects) {
+
+        $("#projects").append(HTMLprojectStart);
+
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.title);
+        $(".project-entry:last").append(formattedTitle);
+
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
+        $(".project-entry:last").append(formattedDates);
+
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
+        $(".project-entry:last").append(formattedDescription);
+
+        var formattedImage = HTMLprojectImage.replace("%data%", projects.images);
+        $(".project-entry:last").append(formattedImage);
+    })
+};
+
+projects.display();
