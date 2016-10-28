@@ -13,7 +13,7 @@ var bio = {
         "location": "Greater New York City Area"
     }],
     "welcomeMessage": "Welcome to my resume!",
-    "skills": ["HTML","CSS","Javacript","Illustrator","Video Editing"],
+    "skills": ["HTML","CSS","Javacript","Web Design","Video Editing"],
     "biopic": "images/Headshot2.jpg"
 };
 
@@ -44,6 +44,22 @@ bio.display = function() {
 
         $("#header").append(formattedBiopic);
         $("#header").append(formattedWelcome);
+
+        if(bio.skills.length > 0) {
+
+            $("#header").append(HTMLskillsStart);
+
+            var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+            $("#skills").append(formattedSkill);
+            formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+            $("#skills").append(formattedSkill);
+            formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+            $("#skills").append(formattedSkill);
+            formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+            $("#skills").append(formattedSkill);
+            formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+            $("#skills").append(formattedSkill);
+}
 };
 
 bio.display();
