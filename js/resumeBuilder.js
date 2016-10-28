@@ -1,6 +1,9 @@
 /*
-This is empty on purpose! Your code to build the resume will go here.
+Javascript code for the frontend nanodegree resume.
  */
+
+
+//Bio section below
 
 var bio = {
     "name": "Alye Carlevaro",
@@ -63,3 +66,59 @@ bio.display = function() {
 };
 
 bio.display();
+
+
+//Work section below
+
+var work = {
+    "jobs": [
+    {
+        "employer": "Music Conservatory of Westchester",
+        "title": "Social Media and Web Manager",
+        "location": "White Plains, NY",
+        "dates": "October 2015 - present",
+        "description": "Create, source and manage social media and website content."
+    },
+    {
+        "employer": "Stephanie Berger Photography",
+        "title": "Assistant",
+        "location": "Piermont, NY",
+        "dates": "September 2014 - May 2016",
+        "description": "Assisted in video projects and managing new website."
+    },
+    {
+        "employer": "Duke University Law Library",
+        "title": "Digital Initivatives Intern",
+        "location": "Durham, NC",
+        "dates": "July 2012 - July 2014",
+        "description": "Converted and organized archival material into digital formats."
+    }]
+};
+
+work.display = function () {
+
+    work.jobs.forEach(function(job){
+
+        $("#workExperience").append(HTMLworkStart);
+
+        var formattedEmployer = HTMLworkEmployer.replace
+            ("%data%", job.employer);
+        var formattedTitle = HTMLworkTitle.replace
+            ("%data%", job.title);
+        var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+        $(".work-entry:last").append(
+            formattedEmployerTitle);
+
+        var formattedDates = HTMLworkDates.replace
+            ("%data%", job.location);
+        var formattedDescription = HTMLworkDescription.replace
+            ("%data%", job.description);
+
+        $(".work-entry:last").append(
+            formattedDates, formattedDescription);
+        })
+};
+
+work.display();
+
