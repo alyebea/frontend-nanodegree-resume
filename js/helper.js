@@ -213,7 +213,7 @@ function initializeMap() {
       locations.forEach(function(place){
       // the search request object
       var request = {
-        query: place
+        query: locations[place]
       };
 
       // Actually searches the Google Maps API for location data and runs the callback
@@ -239,11 +239,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
-  //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+window.addEventListener('resize', function(e) {
+// Make sure the map bounds get updated on page resize
+ map.fitBounds(mapBounds);
+});
