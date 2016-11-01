@@ -1,20 +1,16 @@
-/*
-Javascript code for the frontend nanodegree resume.
- */
-
 
 //Bio section below
 
 var bio = {
     "name": "Alye Carlevaro",
     "role": "Front-End Web Developer",
-    "contacts": [{
+    "contacts": {
         "mobile": "845-596-2144",
         "email": "abcarlevaro@gmail.com",
         "github": "alyebea",
         "twitter": "@alyebea",
-        "location": "Greater New York City Area"
-    }],
+        "location": "New York, NY"
+    },
     "welcomeMessage": "Welcome to my resume!",
     "skills": ["HTML","CSS","Javacript","Web Design","Video Editing"],
     "biopic": "images/Headshot2.jpg"
@@ -29,19 +25,18 @@ bio.display = function() {
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
 
-    bio.contacts.forEach(function(contact){
 
-        var formattedMobile = HTMLmobile.replace("%data%", contact.mobile);
-        $("#topContacts, #footerContacts").append(formattedMobile);
-        var formattedEmail = HTMLemail.replace("%data%", contact.email);
-        $("#topContacts, #footerContacts").append(formattedEmail);
-        var formattedGithub = HTMLgithub.replace("%data%", contact.github);
-        $("#topContacts, #footerContacts").append(formattedGithub);
-        var formattedTwitter = HTMLtwitter.replace("%data%", contact.twitter);
-        $("#topContacts, #footerContacts").append(formattedTwitter);
-        var formattedLocation = HTMLlocation.replace("%data%", contact.location);
-        $("#topContacts, #footerContacts").append(formattedLocation);
-    })
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    $("#topContacts, #footerContacts").append(formattedMobile);
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    $("#topContacts, #footerContacts").append(formattedEmail);
+    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+    $("#topContacts, #footerContacts").append(formattedGithub);
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    $("#topContacts, #footerContacts").append(formattedTwitter);
+    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    $("#topContacts, #footerContacts").append(formattedLocation);
+
 
     var formattedWelcome = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
@@ -67,6 +62,82 @@ bio.display = function() {
 };
 
 
+//Education section below
+
+var education = {
+    "schools": [
+    {
+        "name": "The City College of New York, Macaulay Honors College",
+        "location": "New York, NY",
+        "degree": "BFA",
+        "major": "Film & Video",
+        "dates": "August 2006 - May 2010"
+    },
+    {
+        "name": "Duke University",
+        "location": "Durham, North Carolina",
+        "degree": "MA",
+        "major": "Graduate Liberal Studies",
+        "dates": "August 2012 - May 2015"
+    }],
+
+    "onlineCourses": [
+    {
+        "title":"Front-end Web Developer Nanodegree",
+        "school": "Udacity.com",
+        "dates": "August 2016 - November 2016",
+        "url": "https://www.udacity.com/"
+    },
+    {   "title":"Various Web and UX Design Courses",
+        "school": "Lynda.com",
+        "dates": "September 2014 - present",
+        "url": "https://www.lynda.com/"
+    }]
+};
+
+education.display = function() {
+
+    education.schools.forEach(function(school) {
+
+        $("#education").append(HTMLschoolStart);
+
+        var formattedName = HTMLschoolName.replace("%data%", school.name);
+        var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
+        var formattedSchoolName = formattedName + formattedDegree;
+
+        $(".education-entry:last").append(formattedSchoolName);
+
+        var formattedDates = HTMLschoolDates.replace("%data%", school.dates);
+        $(".education-entry:last").append(formattedDates);
+
+        var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
+        $(".education-entry:last").append(formattedLocation);
+
+        var formattedMajor = HTMLschoolMajor.replace("%data%", school.major);
+        $(".education-entry:last").append(formattedMajor);
+
+    });
+
+    if (education.onlineCourses.length > 0) {
+
+        $(".education-entry:last").append(HTMLonlineClasses);
+
+        education.onlineCourses.forEach(function(course) {
+            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", course.title);
+            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", course.school);
+            var formattedOnlineName = formattedOnlineTitle + formattedOnlineSchool;
+
+            $(".education-entry:last").append(formattedOnlineName);
+
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", course.dates);
+            $(".education-entry:last").append(formattedOnlineDates);
+
+            var formattedOnlineURL = HTMLonlineURL.replace("%data%", course.url);
+            $(".education-entry:last").append(formattedOnlineURL);
+        });
+    }
+};
+
 
 //Work section below
 
@@ -75,21 +146,21 @@ var work = {
     {
         "employer": "Music Conservatory of Westchester",
         "title": "Social Media and Web Manager",
-        "location": "White Plains, NY",
+        "location": "White Plains, New York",
         "dates": "October 2015 - present",
         "description": "Create, source and manage social media and website content."
     },
     {
         "employer": "Stephanie Berger Photography",
         "title": "Assistant",
-        "location": "Piermont, NY",
+        "location": "Piermont, New York",
         "dates": "September 2014 - May 2016",
         "description": "Assisted in video projects and managing new website."
     },
     {
         "employer": "Duke University Law Library",
         "title": "Digital Initivatives Intern",
-        "location": "Durham, NC",
+        "location": "Durham, North Carolina",
         "dates": "July 2012 - July 2014",
         "description": "Converted and organized archival material into digital formats."
     }]
@@ -172,87 +243,11 @@ projects.display = function() {
 
 
 
-//Education section below
-
-var education = {
-    "schools": [
-    {
-        "name": "The City College of New York, Macaulay Honors College",
-        "location": "New York, NY",
-        "degree": "BFA",
-        "major": "Film & Video",
-        "dates": "August 2006 - May 2010"
-    },
-    {
-        "name": "Duke University",
-        "location": "Durham, NC",
-        "degree": "MA",
-        "major": "Graduate Liberal Studies",
-        "dates": "August 2012 - May 2015"
-    }],
-
-    "onlineCourses": [
-    {
-        "title":"Front-end Web Developer Nanodegree",
-        "school": "Udacity.com",
-        "dates": "August 2016 - November 2016",
-        "url": "https://www.udacity.com/"
-    },
-    {   "title":"Various Web and UX Design Courses",
-        "school": "Lynda.com",
-        "dates": "September 2014 - present",
-        "url": "https://www.lynda.com/"
-    }]
-};
-
-education.display = function() {
-
-    education.schools.forEach(function(school) {
-
-        $("#education").append(HTMLschoolStart);
-
-        var formattedName = HTMLschoolName.replace("%data%", school.name);
-        var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
-        var formattedSchoolName = formattedName + formattedDegree;
-
-        $(".education-entry:last").append(formattedSchoolName);
-
-        var formattedDates = HTMLschoolDates.replace("%data%", school.dates);
-        $(".education-entry:last").append(formattedDates);
-
-        var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
-        $(".education-entry:last").append(formattedLocation);
-
-        var formattedMajor = HTMLschoolMajor.replace("%data%", school.major);
-        $(".education-entry:last").append(formattedMajor);
-
-    });
-
-    if (education.onlineCourses.length > 0) {
-
-        $(".education-entry:last").append(HTMLonlineClasses);
-
-        education.onlineCourses.forEach(function(course) {
-            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", course.title);
-            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", course.school);
-            var formattedOnlineName = formattedOnlineTitle + formattedOnlineSchool;
-
-            $(".education-entry:last").append(formattedOnlineName);
-
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", course.dates);
-            $(".education-entry:last").append(formattedOnlineDates);
-
-            var formattedOnlineURL = HTMLonlineURL.replace("%data%", course.url);
-            $(".education-entry:last").append(formattedOnlineURL);
-        });
-    }
-};
-
 //display functions
 bio.display();
+education.display();
 work.display();
 projects.display();
-education.display();
 
 
 //Interactive map and internationalize button
