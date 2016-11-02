@@ -11,7 +11,7 @@ h5,
 h6 {
   padding:0;
   margin:0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .clear-fix {
@@ -26,9 +26,10 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #e6e6e6;
   line-height: 48px;
   display: inline;
+  font-family: 'Trirong', serif;
 }
 
 h2 {
@@ -40,10 +41,10 @@ h2 {
 }
 
 h3 {
-  font-style: italic;
   font-size: 20px;
-  color: #000;
+  color: #666;
   line-height: 22px;
+  padding-top: 20px;
 }
 
 h4 {
@@ -54,7 +55,6 @@ h4 {
 }
 
 h2,
-h3,
 h4,
 h5 {
   padding:10px 5%;
@@ -95,26 +95,22 @@ a {
 .welcome-message {
   font-style: italic;
   font-size: 18px;
-  color: #f3f3f3;
+  color: #AEAEAE;
   line-height: 28px;
 }
 
 #skills-h3 {
-  color: #f5ae23;
+  color: #2eb8b8;
   display: none;
 }
 
-.orange {
-  background-color: #f5ae23;
-}
-
 .orange-text {
-  color: #f5ae23;
+  color: #2eb8b8;
 }
 
 .white-text {
   font-weight: bold;
-  color: #fff;
+  color: #eee;
 }
 
 .gray {
@@ -129,7 +125,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #4a4a4a;
 }
 
 .flex-box {
@@ -168,7 +164,7 @@ img {
 }
 
 span {
-  padding: 5px;
+  padding: 10px;
 }
 
 #lets-connect {

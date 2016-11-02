@@ -1,6 +1,4 @@
-
 //Bio section below
-
 var bio = {
     "name": "Alye Carlevaro",
     "role": "Front-End Web Developer",
@@ -12,11 +10,12 @@ var bio = {
         "location": "New York, NY"
     },
     "welcomeMessage": "Welcome to my resume!",
-    "skills": ["HTML","CSS","Javacript","Web Design","Video Editing"],
+    "skills": ["HTML", "CSS", "Javacript", "Web Design", "Video Editing"],
     "biopic": "images/Headshot2.jpg"
 };
 
-//function to display bio code
+//function to display bio
+
 bio.display = function() {
 
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -44,7 +43,7 @@ bio.display = function() {
     $("#header").append(formattedBiopic);
     $("#header").append(formattedWelcome);
 
-    if(bio.skills.length > 0) {
+    if (bio.skills.length > 0) {
 
         $("#header").append(HTMLskillsStart);
 
@@ -61,37 +60,38 @@ bio.display = function() {
     }
 };
 
+bio.display();
+
 
 //Education section below
 
 var education = {
-    "schools": [
-    {
+    "schools": [{
         "name": "The City College of New York, Macaulay Honors College",
         "location": "New York, NY",
         "degree": "BFA",
         "major": "Film & Video",
-        "dates": "August 2006 - May 2010"
-    },
-    {
+        "dates": "August 2006 - May 2010",
+        "url": "https://www.ccny.cuny.edu"
+    }, {
         "name": "Duke University",
-        "location": "Durham, North Carolina",
+        "location": "Durham, NC",
         "degree": "MA",
         "major": "Graduate Liberal Studies",
-        "dates": "August 2012 - May 2015"
+        "dates": "August 2012 - May 2015",
+        "url": "https://www.duke.edu"
     }],
 
-    "onlineCourses": [
-    {
-        "title":"Front-end Web Developer Nanodegree",
+    "onlineCourses": [{
+        "title": "Front-end Web Developer Nanodegree",
         "school": "Udacity.com",
         "dates": "August 2016 - November 2016",
-        "url": "https://www.udacity.com/"
-    },
-    {   "title":"Various Web and UX Design Courses",
+        "url": "https://www.udacity.com"
+    }, {
+        "title": "Various Web and UX Design Courses",
         "school": "Lynda.com",
         "dates": "September 2014 - present",
-        "url": "https://www.lynda.com/"
+        "url": "https://www.lynda.com"
     }]
 };
 
@@ -101,7 +101,7 @@ education.display = function() {
 
         $("#education").append(HTMLschoolStart);
 
-        var formattedName = HTMLschoolName.replace("%data%", school.name);
+        var formattedName = HTMLschoolName.replace("%data%", school.name).replace('#', school.url);
         var formattedDegree = HTMLschoolDegree.replace("%data%", school.degree);
         var formattedSchoolName = formattedName + formattedDegree;
 
@@ -138,81 +138,74 @@ education.display = function() {
     }
 };
 
+education.display();
+
 
 //Work section below
 
 var work = {
-    "jobs": [
-    {
+    "jobs": [{
         "employer": "Music Conservatory of Westchester",
         "title": "Social Media and Web Manager",
-        "location": "White Plains, New York",
+        "location": "White Plains, NY",
         "dates": "October 2015 - present",
         "description": "Create, source and manage social media and website content."
-    },
-    {
+    }, {
         "employer": "Stephanie Berger Photography",
         "title": "Assistant",
-        "location": "Piermont, New York",
+        "location": "Piermont, NY",
         "dates": "September 2014 - May 2016",
         "description": "Assisted in video projects and managing new website."
-    },
-    {
+    }, {
         "employer": "Duke University Law Library",
         "title": "Digital Initivatives Intern",
-        "location": "Durham, North Carolina",
+        "location": "Durham, NC",
         "dates": "July 2012 - July 2014",
         "description": "Converted and organized archival material into digital formats."
     }]
 };
 
-//function to display work code
-work.display = function () {
+//function to display work
 
-    work.jobs.forEach(function(job){
+work.display = function() {
+
+    work.jobs.forEach(function(job) {
 
         $("#workExperience").append(HTMLworkStart);
 
-        var formattedEmployer = HTMLworkEmployer.replace
-            ("%data%", job.employer);
-        var formattedTitle = HTMLworkTitle.replace
-            ("%data%", job.title);
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", job.employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", job.title);
         var formattedEmployerTitle = formattedEmployer + formattedTitle;
 
         $(".work-entry:last").append(
             formattedEmployerTitle);
 
-        var formattedLocation = HTMLworkLocation.replace
-            ("%data%", job.location);
-        var formattedDates = HTMLworkDates.replace
-            ("%data%", job.dates);
-        var formattedDescription = HTMLworkDescription.replace
-            ("%data%", job.description);
+        var formattedLocation = HTMLworkLocation.replace("%data%", job.location);
+        var formattedDates = HTMLworkDates.replace("%data%", job.dates);
+        var formattedDescription = HTMLworkDescription.replace("%data%", job.description);
 
         $(".work-entry:last").append(
             formattedLocation, formattedDates, formattedDescription);
-    })
+    });
 };
 
+work.display();
 
 
 //Projects section below
 
 var projects = {
-    "projects": [
-    {
+    "projects": [{
         "title": "Finding Home: Journey of an Italian Immigrant",
         "dates": "September 2014 - May 2015",
         "description": "Interactive documentary e-book created as a final project for my Masters Degree.",
         "images": "images/findinghome.jpg"
-    },
-    {
+    }, {
         "title": "Music Conservatory of Westchester Website",
         "dates": "October 2015 - May 2016",
         "description": "Updated and improved the Music Conservatory website with better usability and visual appeal.",
         "images": "images/musicconservatory.jpg"
-    },
-    {
+    }, {
         "title": "Portfolio Website",
         "dates": "September 2016",
         "description": "Created visual portfolio site in fulfillment of Ucacity nanodegree.",
@@ -220,7 +213,8 @@ var projects = {
     }]
 };
 
-//function to display projects code
+//function to display projects
+
 projects.display = function() {
 
     projects.projects.forEach(function(projects) {
@@ -238,25 +232,16 @@ projects.display = function() {
 
         var formattedImage = HTMLprojectImage.replace("%data%", projects.images);
         $(".project-entry:last").append(formattedImage);
-    })
+    });
 };
 
-
-
-//display functions
-bio.display();
-education.display();
-work.display();
 projects.display();
 
 
-//Interactive map and internationalize button
 
-$('#main').append(internationalizeButton);
+//Interactive map
+
 $("#mapDiv").append(googleMap);
-
-
-
 
 
 
