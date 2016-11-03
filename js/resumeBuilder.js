@@ -47,17 +47,11 @@ bio.display = function() {
 
         $("#header").append(HTMLskillsStart);
 
-        var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+        bio.skills.forEach(function(skill) {
+        var formattedSkill = HTMLskills.replace("%data%", skill);
         $("#skills").append(formattedSkill);
-        formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-        $("#skills").append(formattedSkill);
-        formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-        $("#skills").append(formattedSkill);
-        formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-        $("#skills").append(formattedSkill);
-        formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-        $("#skills").append(formattedSkill);
-    }
+        });
+    };
 };
 
 bio.display();
@@ -70,14 +64,14 @@ var education = {
         "name": "The City College of New York, Macaulay Honors College",
         "location": "New York, NY",
         "degree": "BFA",
-        "major": "Film & Video",
+        "majors": "Film & Video",
         "dates": "August 2006 - May 2010",
         "url": "https://www.ccny.cuny.edu"
     }, {
         "name": "Duke University",
         "location": "Durham, NC",
         "degree": "MA",
-        "major": "Graduate Liberal Studies",
+        "majors": "Graduate Liberal Studies",
         "dates": "August 2012 - May 2015",
         "url": "https://www.duke.edu"
     }],
@@ -113,7 +107,7 @@ education.display = function() {
         var formattedLocation = HTMLschoolLocation.replace("%data%", school.location);
         $(".education-entry:last").append(formattedLocation);
 
-        var formattedMajor = HTMLschoolMajor.replace("%data%", school.major);
+        var formattedMajor = HTMLschoolMajor.replace("%data%", school.majors);
         $(".education-entry:last").append(formattedMajor);
 
     });
@@ -123,7 +117,7 @@ education.display = function() {
         $(".education-entry:last").append(HTMLonlineClasses);
 
         education.onlineCourses.forEach(function(course) {
-            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", course.title);
+            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", course.title).replace('#', course.url);
             var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", course.school);
             var formattedOnlineName = formattedOnlineTitle + formattedOnlineSchool;
 
@@ -132,7 +126,7 @@ education.display = function() {
             var formattedOnlineDates = HTMLonlineDates.replace("%data%", course.dates);
             $(".education-entry:last").append(formattedOnlineDates);
 
-            var formattedOnlineURL = HTMLonlineURL.replace("%data%", course.url);
+            var formattedOnlineURL = HTMLonlineURL.replace("%data%", course.url).replace('#', course.url);
             $(".education-entry:last").append(formattedOnlineURL);
         });
     }
@@ -199,17 +193,17 @@ var projects = {
         "title": "Finding Home: Journey of an Italian Immigrant",
         "dates": "September 2014 - May 2015",
         "description": "Interactive documentary e-book created as a final project for my Masters Degree.",
-        "images": "images/findinghome.jpg"
+        "images": ["images/findinghome.jpg"]
     }, {
         "title": "Music Conservatory of Westchester Website",
         "dates": "October 2015 - May 2016",
         "description": "Updated and improved the Music Conservatory website with better usability and visual appeal.",
-        "images": "images/musicconservatory.jpg"
+        "images": ["images/musicconservatory.jpg"]
     }, {
         "title": "Portfolio Website",
         "dates": "September 2016",
         "description": "Created visual portfolio site in fulfillment of Ucacity nanodegree.",
-        "images": "images/portfolioproject.jpg"
+        "images": ["images/portfolioproject.jpg"]
     }]
 };
 
@@ -217,22 +211,26 @@ var projects = {
 
 projects.display = function() {
 
-    projects.projects.forEach(function(projects) {
+    projects.projects.forEach(function(project) {
 
         $("#projects").append(HTMLprojectStart);
 
-        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.title);
+        var formattedTitle = HTMLprojectTitle.replace("%data%", project.title);
         $(".project-entry:last").append(formattedTitle);
 
-        var formattedDates = HTMLprojectDates.replace("%data%", projects.dates);
+        var formattedDates = HTMLprojectDates.replace("%data%", project.dates);
         $(".project-entry:last").append(formattedDates);
 
-        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.description);
+        var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
         $(".project-entry:last").append(formattedDescription);
 
-        var formattedImage = HTMLprojectImage.replace("%data%", projects.images);
-        $(".project-entry:last").append(formattedImage);
-    });
+        if (project.images.length > 0) {
+            project.images.forEach(function(image) {
+            var formattedImage = HTMLprojectImage.replace("%data%", image);
+            $(".project-entry:last").append(formattedImage);
+            });
+        }
+    })
 };
 
 projects.display();
