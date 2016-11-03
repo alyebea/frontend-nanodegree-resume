@@ -51,7 +51,7 @@ bio.display = function() {
         var formattedSkill = HTMLskills.replace("%data%", skill);
         $("#skills").append(formattedSkill);
         });
-    };
+    }
 };
 
 bio.display();
@@ -230,7 +230,7 @@ projects.display = function() {
             $(".project-entry:last").append(formattedImage);
             });
         }
-    })
+    });
 };
 
 projects.display();
